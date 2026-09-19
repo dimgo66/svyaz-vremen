@@ -631,6 +631,11 @@
 
   PDFlipbook.prototype._placeHotZones = function () {
     var hot = Math.round(this.pageW * 2 * this.opts.edgeSize);
+    // z-index листов доходит до numSheets — зоны захвата должны быть выше,
+    // иначе на длинных книгах (z > 60) канвас страницы перекрывает угол
+    var hz = (this.numSheets || 0) + 6;
+    this.hotL.style.zIndex = hz;
+    this.hotR.style.zIndex = hz;
     this.hotL.style.width = hot + 'px';
     this.hotR.style.width = hot + 'px';
     this.hotL.style.left = '0';
