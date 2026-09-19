@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Связь времён — сборник семейных рассказов</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ivory: #f4ede0;
+      --ivory-2: #ede4d2;
+      --ivory-3: #e5d9c0;
+      --paper: #faf6ec;
+      --ink: #1f2024;
+      --ink-2: #3a3c42;
+      --graphite: #2a2c31;
+      --muted: #6b6a63;
+      --rule: #c9bfa8;
+      --accent: #7a1f2b;
+      /* deep bordeaux */
+      --accent-2: #b7842a;
+      /* warm ochre */
+      --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      background: var(--ivory);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit
+    }
+
+    img {
+      display: block;
+      max-width: 100%
+    }
+
+    /* --- top bar --- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(244, 237, 224, .86);
+      backdrop-filter: saturate(140%) blur(10px);
+      -webkit-backdrop-filter: saturate(140%) blur(10px);
+      border-bottom: 1px solid rgba(42, 44, 49, .08);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px;
+    }
+
+    .brand {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: .01em;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .brand em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .brand .yr {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 3px 8px;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 26px;
+      font-size: 13.5px;
+      letter-spacing: .02em
+    }
+
+    .navlinks a {
+      text-decoration: none;
+      color: var(--ink-2);
+      padding: 6px 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s, color .2s;
+    }
+
+    .navlinks a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent)
+    }
+
+    @media (max-width:760px) {
+      .navlinks {
+        display: none
+      }
+    }
+
+    /* --- hero --- */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 64px 28px 48px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    @media (max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding-top: 36px
+      }
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11.5px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .kicker .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    h1.title {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(56px, 8.5vw, 116px);
+      line-height: .94;
+      letter-spacing: -.015em;
+      margin: 0 0 22px;
+      color: var(--graphite);
+    }
+
+    h1.title em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .lead {
+      font-family: var(--serif);
+      font-size: clamp(20px, 2.1vw, 26px);
+      line-height: 1.42;
+      color: var(--ink-2);
+      max-width: 560px;
+      margin: 0 0 32px;
+      font-weight: 400;
+    }
+
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      font-size: 12.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 22px;
+      border-top: 1px solid var(--rule);
+      max-width: 520px;
+    }
+
+    .meta-line span strong {
+      color: var(--ink);
+      font-weight: 600;
+      letter-spacing: .06em
+    }
+
+    .cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 38px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 28px;
+      font: 600 14px/1 var(--sans);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform .15s, background .2s, color .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px)
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--paper)
+    }
+
+    .btn-primary:hover {
+      background: #5f1721
+    }
+
+    .btn-primary .arrow {
+      transition: transform .2s
+    }
+
+    .btn-primary:hover .arrow {
+      transform: translateX(4px)
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--graphite);
+      border-color: var(--graphite);
+    }
+
+    .btn-ghost:hover {
+      background: var(--graphite);
+      color: var(--paper)
+    }
+
+    /* --- cover art --- */
+    .cover-wrap {
+      position: relative;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover-glow {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 82%;
+      background: radial-gradient(closest-side, rgba(122, 31, 43, .16), transparent 72%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .cover-floor {
+      position: absolute;
+      z-index: 0;
+      left: 8%;
+      right: 8%;
+      bottom: 6%;
+      height: 40px;
+      background: radial-gradient(50% 100% at 50% 0%, rgba(0, 0, 0, .35), transparent 70%);
+      filter: blur(6px);
+    }
+
+    .cover-img {
+      position: relative;
+      z-index: 1;
+      max-height: 720px;
+      height: min(72vh, 720px);
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 26px 32px rgba(0, 0, 0, .28)) drop-shadow(0 10px 16px rgba(0, 0, 0, .18));
+      transform: translateY(0) rotate(-1.5deg);
+      transition: transform .5s cubic-bezier(.2, .7, .2, 1);
+      -webkit-user-drag: none;
+      user-select: none;
+    }
+
+    .cover-img:hover {
+      transform: translateY(-6px) rotate(0deg)
+    }
+
+    /* corner tag — убран по просьбе */
+    .stamp { display: none }
+
+    /* --- section shell --- */
+    section {
+      padding: 96px 28px
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 20px;
+    }
+
+    .section-num {
+      font: 500 14px/1 var(--sans);
+      letter-spacing: .2em;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: -.01em;
+      line-height: 1;
+      color: var(--graphite);
+      margin: 0;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--accent)
+    }
+
+    /* --- about book --- */
+    #about {
+      background: var(--paper)
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+    }
+
+    @media (max-width:900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px
+      }
+    }
+
+    .about-aside {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.4;
+      color: var(--accent);
+    }
+
+    .about-body p {
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--ink-2);
+      margin: 0 0 20px;
+      text-wrap: pretty;
+    }
+
+    .about-body p strong {
+      color: var(--graphite);
+      font-weight: 600
+    }
+
+    .about-body p:first-child::first-letter {
+      font-family: var(--serif);
+      font-size: 64px;
+      font-weight: 500;
+      float: left;
+      line-height: .9;
+      padding: 6px 12px 0 0;
+      color: var(--accent);
+    }
+
+    /* --- toc --- */
+    /* --- authors group photo --- */
+    #authors {
+      background: var(--paper)
+    }
+
+    .group-photo {
+      margin: 0;
+      position: relative;
+    }
+
+    .group-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 16 / 10.6;
+      object-fit: cover;
+      box-shadow:
+        0 30px 60px -20px rgba(0, 0, 0, .35),
+        0 14px 24px -14px rgba(0, 0, 0, .2);
+    }
+
+    .group-photo figcaption {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .group-photo .gp-place {
+      font: 500 11px/1 var(--sans);
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .group-photo .gp-caption {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.4;
+      color: var(--ink-2);
+      max-width: 720px;
+      text-wrap: pretty;
+    }
+
+    /* --- quotes --- */
+    #quotes {
+      background: var(--graphite);
+      color: var(--paper)
+    }
+
+    #quotes .section-title {
+      color: var(--paper)
+    }
+
+    #quotes .section-num {
+      color: var(--accent-2)
+    }
+
+    #quotes .section-head {
+      border-bottom-color: rgba(255, 255, 255, .15)
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    @media (max-width:900px) {
+      .quote-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .quote {
+      background: var(--graphite);
+      padding: 40px 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-height: 280px;
+    }
+
+    .quote .mark {
+      font: 500 72px/.5 var(--serif);
+      color: var(--accent-2);
+      height: 24px;
+    }
+
+    .quote blockquote {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.4;
+      font-weight: 400;
+      margin: 0;
+      color: #f0ead8;
+      text-wrap: pretty;
+      font-style: italic;
+    }
+
+    .quote cite {
+      margin-top: auto;
+      font: 500 11px/1.4 var(--sans);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .6);
+      font-style: normal;
+    }
+
+    .quote cite b {
+      color: var(--paper);
+      font-weight: 600;
+      letter-spacing: .14em
+    }
+
+    /* --- flipbook section — без фона, книга просто лежит на странице --- */
+    #read {
+      background: transparent;
+      padding-bottom: 80px
+    }
+
+    #read .section-title {
+      color: var(--graphite)
+    }
+
+    #read .section-num {
+      color: var(--accent)
+    }
+
+    #read .section-head {
+      border-bottom-color: var(--rule)
+    }
+
+    .read-hint {
+      font: 400 13px/1.5 var(--sans);
+      color: var(--muted);
+      max-width: 340px;
+      text-align: right;
+    }
+
+    .read-hint kbd {
+      display: inline-block;
+      font: 600 11px/1 var(--sans);
+      padding: 3px 6px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      color: var(--ink);
+      margin: 0 2px;
+    }
+
+    /* book frame — без тени и фона, книга лежит на странице */
+    .book-frame {
+      border-radius: 8px;
+      padding: 0;
+      /* overflow:visible нужен для угловых горячих зон */
+      overflow: visible;
+      /* тень убрана по просьбе */
+      box-shadow: none;
+    }
+
+    #book {
+      height: min(76vh, 760px);
+      min-height: 460px;
+      border-radius: 4px;
+      /* Переопределяем overflow:hidden из .fb-root */
+      overflow: visible !important;
+      --fb-bg: transparent;
+      --fb-paper: #fbf7ec;
+      --fb-control-bg: rgba(30, 30, 30, .75);
+      --fb-control-fg: #f4ede0;
+      /* Скрываем счётчик страниц */
+      --fb-counter-fg: transparent;
+      --fb-shadow: 0 30px 60px -20px rgba(0, 0, 0, .35), 0 14px 24px -14px rgba(0, 0, 0, .2);
+    }
+
+    /* Скрываем счётчик страниц */
+    #book .fb-counter {
+      display: none !important;
+    }
+
+    /* Горячие зоны для перелистывания должны быть видны за пределами книги */
+    #book .fb-hot {
+      overflow: visible;
+      height: 110%;
+      top: -5%;
+    }
+
+    /* Тень у корешка разворота — усиливаем встроенные грани-градиенты.
+       Эти ::before уже существуют в pdflipbook.js и находятся ВНУТРИ грани,
+       поэтому никогда не перекрывают анимацию перелистывания */
+    #book .fb-face-front::before {
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, .30) 0%,
+        rgba(0, 0, 0, .10) 8%,
+        transparent 18%
+      ) !important;
+    }
+    #book .fb-face-back::before {
+      background: linear-gradient(
+        to left,
+        rgba(0, 0, 0, .30) 0%,
+        rgba(0, 0, 0, .10) 8%,
+        transparent 18%
+      ) !important;
+    }
+
+    .read-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      justify-content: center;
+    }
+
+    /* --- author --- */
+    #author {
+      background: var(--paper)
+    }
+
+    .author-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    @media (max-width:900px) {
+      .author-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .author-photo {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: var(--ivory-2);
+      box-shadow:
+        0 20px 40px -20px rgba(0, 0, 0, .35),
+        0 8px 16px -12px rgba(0, 0, 0, .2),
+        inset 0 0 0 1px rgba(0, 0, 0, .06);
+    }
+
+    .author-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      object-position: center 20%;
+    }
+
+    .author-name {
+      font-family: var(--serif);
+      font-size: 44px;
+      font-weight: 500;
+      line-height: 1;
+      margin: 0 0 8px;
+      color: var(--graphite);
+    }
+
+    .author-role {
+      font: 500 12px/1 var(--sans);
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .author-body p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--ink-2);
+      margin: 0 0 16px;
+    }
+
+    .credits {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 14px 18px;
+      font-size: 14px;
+    }
+
+    .credits dt {
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 11.5px
+    }
+
+    .credits dd {
+      margin: 0;
+      color: var(--graphite)
+    }
+
+    /* --- contacts / footer --- */
+    #contacts {
+      background: var(--graphite);
+      color: var(--paper);
+      padding: 80px 28px 40px
+    }
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 56px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (max-width:800px) {
+      .contacts-grid {
+        grid-template-columns: 1fr;
+        gap: 32px
+      }
+    }
+
+    .contacts-grid h3 {
+      font: 500 11px/1 var(--sans);
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin: 0 0 20px;
+    }
+
+    .contacts-grid p,
+    .contacts-grid a {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: #e8e0cc;
+      text-decoration: none;
+    }
+
+    .contacts-grid a {
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s
+    }
+
+    .contacts-grid a:hover {
+      border-bottom-color: var(--accent-2)
+    }
+
+    .colophon {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--paper);
+      margin: 0 0 18px;
+    }
+
+    .footer-line {
+      max-width: 1200px;
+      margin: 60px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, .14);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font: 400 12px/1.5 var(--sans);
+      color: rgba(255, 255, 255, .55);
+      letter-spacing: .06em;
+      flex-wrap: wrap;
+    }
+
+    /* icons */
+    .i {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        Связь <em>времён</em>
+        <span class="yr">MMXXVI</span>
+      </div>
+      <div class="navlinks">
+        <a href="#about">Аннотация</a>
+        <a href="#quotes">Отрывки</a>
+        <a href="#read">Читать</a>
+        <a href="#authors">Авторы</a>
+        <a href="#author">Об авторе</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div>
+      <div class="kicker"><span class="dot"></span> Антология · Конкурс семейного рассказа · 2026</div>
+      <h1 class="title">Связь<br><em>времён</em></h1>
+      <p class="lead">Сборник финалистов международного конкурса семейного рассказа — о преемственности поколений, о
+        свете памяти и о том, что делает нас родными.</p>
+
+      <div class="cta">
+        <a href="#read" class="btn btn-primary">
+          Читать книгу
+          <svg class="i arrow" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="assets/svyaz-vremen-2026.pdf" download class="btn btn-ghost">
+          <svg class="i" viewBox="0 0 24 24">
+            <path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14" />
+          </svg>
+          Скачать PDF
+        </a>
+      </div>
+
+      <div class="meta-line">
+        <span><strong>208</strong> страниц</span>
+        <span><strong>73</strong> автора</span>
+        <span><strong>7</strong> стран</span>
+        <span>ISBN <strong>978‑5‑6043650‑5‑2</strong></span>
+      </div>
+    </div>
+
+    <div class="cover-wrap">
+      <div class="cover-glow"></div>
+      <div class="cover-floor"></div>
+      <img class="cover-img" src="assets/cover-3d-transparent.png" alt="Связь времён — обложка книги">
+    </div>
+  </header>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-num">§ 01</div>
+        <h2 class="section-title">Об этой <em>книге</em></h2>
+      </div>
+      <div class="about-grid">
+        <aside class="about-aside">
+          «Семейное творчество — тот необходимый свет, который помогает преодолевать жизненные трудности».
+        </aside>
+        <div class="about-body">
+          <p>Сборник «Связь времён» представляет собой антологию произведений финалистов международного конкурса
+            семейного рассказа, изданную под руководством <strong>Софии Агачер</strong>. В текстах отражена
+            преемственность поколений, где личные воспоминания авторов о детстве, родителях и традициях служат защитой
+            от забвения в эпоху цифровых технологий.</p>
+          <p>Истории охватывают широкий спектр тем: от трогательных бесед правнуков с предками до забавных случаев из
+            школьной и деревенской жизни. Главная цель проекта — сохранить <strong>«прямое знание»</strong> и культурный
+            код семьи, объединяя авторов разных возрастов и стран.</p>
+          <p>Сквозь призму искренних новелл читатель видит, как любовь и память формируют внутренний мир человека.
+            Издание подчёркивает, что семейное творчество — необходимый свет, помогающий преодолевать жизненные
+            трудности.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUOTES ============ -->
+  <section id="quotes">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-num">§ 02</div>
+        <h2 class="section-title">Из <em>страниц</em> сборника</h2>
+      </div>
+      <div class="quote-grid">
+        <div class="quote">
+          <div class="mark">“</div>
+          <blockquote>Бабушка складывала слова, как складывают простыни: ровно, с запахом ветра и лаванды. Так и память
+            — если её сложить правильно, она не мнётся.</blockquote>
+          <cite><b>Из рассказа</b> · «Комната с окном во двор»</cite>
+        </div>
+        <div class="quote">
+          <div class="mark">“</div>
+          <blockquote>Мы разучились слышать друг друга, потому что перестали жить в одном доме. А ведь достаточно
+            поставить два стула у окна — и время начинает течь общее.</blockquote>
+          <cite><b>Из предисловия</b> · София Агачер</cite>
+        </div>
+        <div class="quote">
+          <div class="mark">“</div>
+          <blockquote>Дед говорил: «Помни имена. Пока помнишь имя — человек рядом». И я помню — семь поколений, до самой
+            той войны, о которой у нас не принято громко.</blockquote>
+          <cite><b>Из рассказа</b> · «Семь имён»</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ READ / FLIPBOOK ============ -->
+  <section id="read">
+    <div class="wrap">
+      <div class="section-head" style="align-items:flex-end">
+        <div>
+          <div class="section-num">§ 03</div>
+          <h2 class="section-title">Читать <em>книгу</em></h2>
+        </div>
+        <div class="read-hint" style="margin-left:auto">
+          Захватите уголок страницы и перелистните — как в настоящей книге.<br>
+          <kbd>←</kbd> <kbd>→</kbd> листать · <kbd>F</kbd> полный экран · <kbd>+</kbd> <kbd>−</kbd> зум
+        </div>
+      </div>
+
+      <div class="book-frame">
+        <div id="book"></div>
+      </div>
+
+      <div class="read-actions">
+        <a href="assets/svyaz-vremen-2026.pdf" download class="btn btn-ghost">
+          <svg class="i" viewBox="0 0 24 24">
+            <path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14" />
+          </svg>
+          Скачать PDF · 1,4 МБ
+        </a>
+        <button class="btn btn-primary" id="btnFullscreen">
+          <svg class="i" viewBox="0 0 24 24">
+            <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
+          </svg>
+          Открыть на весь экран
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUTHORS GROUP ============ -->
+  <section id="authors">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-num">§ 04</div>
+        <h2 class="section-title">Авторы <em>сборника</em></h2>
+      </div>
+      <figure class="group-photo">
+        <img src="assets/authors-group.jpg" alt="Авторы сборника «Связь времён» — вручение в Московском доме книги">
+        <figcaption>
+          <span class="gp-place">Московский дом книги · 2026</span>
+          <span class="gp-caption">Финалисты и авторы конкурса семейного рассказа — взрослые и дети, чьи тексты вошли в
+            сборник. 24 автора из семи стран.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ AUTHOR / EDITOR ============ -->
+  <section id="author">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-num">§ 05</div>
+        <h2 class="section-title">Об <em>авторе</em> и редакции</h2>
+      </div>
+      <div class="author-grid">
+        <div class="author-photo">
+          <img src="assets/agacher.jpg" alt="София Агачер">
+        </div>
+        <div>
+          <div class="author-name">София Агачер</div>
+          <div class="author-role">Составитель · руководитель проекта</div>
+          <div class="author-body">
+            <p>Писатель и организатор международного конкурса семейного рассказа, лауреат премии «Гипертекст». Автор
+              идеи сборника «Связь времён» — площадки, где встречаются голоса разных поколений и стран, а личные
+              семейные истории становятся общим культурным кодом.</p>
+            <p>Со-составители — <strong>Владимир Коркунов</strong> и <strong>Иван Михайлов</strong>. В сборнике — 24
+              автора из семи стран: от коротких новелл о детстве и деревенском лете до глубоких разговоров с прадедами.
+            </p>
+          </div>
+
+          <dl class="credits">
+            <dt>Издательство</dt>
+            <dd>Фонд «Живая книга», Москва</dd>
+            <dt>Год</dt>
+            <dd>2026</dd>
+            <dt>Объём</dt>
+            <dd>208 страниц</dd>
+            <dt>Составители</dt>
+            <dd>С. Агачер, В. Коркунов, И. Михайлов</dd>
+            <dt>ISBN</dt>
+            <dd>978‑5‑6043650‑5‑2</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTS ============ -->
+  <footer id="contacts">
+    <div class="contacts-grid">
+      <div>
+        <p class="colophon">«Пока мы рассказываем — мы связаны».</p>
+        <p style="color:rgba(255,255,255,.7); font-size:14px">Присылайте свои семейные истории — следующий сборник
+          соберём вместе с вами.</p>
+      </div>
+      <div>
+        <h3>Связаться</h3>
+        <p><a href="mailto:Agacher.bragbook@gmail.com">Agacher.bragbook@gmail.com</a></p>
+      </div>
+      <div>
+        <h3>Проект</h3>
+        <p><a href="https://konkurs-minmv.vercel.app/" target="_blank" rel="noopener">Конкурс семейного рассказа</a></p>
+        <p><a href="#">Фонд «Живая книга»</a></p>
+        <p><a href="assets/svyaz-vremen-2026.pdf" download>Скачать PDF сборника</a></p>
+      </div>
+    </div>
+    <div class="footer-line">
+      <div>© 2026 Фонд «Живая книга». Все права защищены.</div>
+      <div>ISBN 978‑5‑6043650‑5‑2 · Отпечатано в России</div>
+    </div>
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+
+  <!-- flipbook library -->
+  <script src="assets/pdflipbook.js"></script>
+
+  <script>
+    // ---- PDFlipbook: bind + fullscreen button ----
+    let book = null;
+    const bookEl = document.getElementById('book');
+    const boot = () => {
+      if (!window.PDFlipbook) { setTimeout(boot, 60); return; }
+      book = PDFlipbook.create(bookEl, {
+        url: 'assets/svyaz-vremen-2026.pdf',
+        displayMode: 'auto',   // разворот на десктопе, одна страница на мобильном
+        shadow: 'always',
+        duration: 620,
+        edgeSize: 0.25,        // зона захвата для перелистывания (25% каждой стороны)
+        cornerFold: true,      // угловое перелистывание как в настоящей книге
+      });
+      bookEl.addEventListener('flipbook:error', () => {
+        bookEl.innerHTML = `<div style="padding:60px; text-align:center; font-family:var(--serif); font-size:20px; color:#7a1f2b">
+        Не удалось загрузить PDF. Откройте страницу через локальный сервер.<br>
+        <a href="assets/svyaz-vremen-2026.pdf" style="color:#7a1f2b">Скачать PDF напрямую →</a>
+      </div>`;
+      });
+    };
+    boot();
+
+    // Диагностика: проверяем горячие зоны после загрузки книги
+    bookEl.addEventListener('flipbook:ready', () => {
+      const hots = bookEl.querySelectorAll('.fb-hot');
+      console.log('[flipbook] ready, mode:', book.mode, 'sheets:', book.numSheets);
+      hots.forEach(h => {
+        const r = h.getBoundingClientRect();
+        console.log('[flipbook] hot zone:', h.className,
+          'w:', r.width.toFixed(0), 'h:', r.height.toFixed(0),
+          'hidden:', h.hidden);
+        h.addEventListener('pointerdown', () => console.log('[flipbook] pointerdown on', h.className), true);
+      });
+    });
+
+    // Smooth-scroll helper (avoids scrollIntoView)
+    function smoothScrollTo(el) {
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.scrollY - 8;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    document.getElementById('btnFullscreen').addEventListener('click', () => {
+      if (book) book.toggleFullscreen();
+    });
+
+    // Перелистывание колёсиком мыши
+    let _wheelTs = 0;
+    bookEl.addEventListener('wheel', (e) => {
+      if (!book) return;
+      e.preventDefault();
+      const now = Date.now();
+      if (now - _wheelTs < 700) return;  // не чаще одного переворота в 0.7 с
+      _wheelTs = now;
+      if (e.deltaY > 0 || e.deltaX > 0) {
+        book.next();
+      } else {
+        book.prev();
+      }
+    }, { passive: false });
+
+    // Smooth-scroll for in-page anchor nav
+    document.querySelectorAll('.navlinks a, .btn[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id && id.startsWith('#') && document.querySelector(id)) {
+          e.preventDefault();
+          smoothScrollTo(document.querySelector(id));
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
