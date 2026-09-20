@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Favicon generator</title></head>
+<body>
+<canvas id="c512" width="512" height="512" style="border:1px solid #ccc"></canvas>
+<canvas id="c192" width="192" height="192" style="border:1px solid #ccc"></canvas>
+<canvas id="c32"  width="32"  height="32"  style="border:1px solid #ccc; image-rendering:pixelated"></canvas>
+<canvas id="c16"  width="16"  height="16"  style="border:1px solid #ccc; image-rendering:pixelated"></canvas>
+<br><br>
+<a id="dl512" download="favicon-512.png">Скачать 512px</a> &nbsp;
+<a id="dl192" download="favicon-192.png">Скачать 192px</a> &nbsp;
+<a id="dl32"  download="favicon-32.png">Скачать 32px</a> &nbsp;
+<a id="dl16"  download="favicon-16.png">Скачать 16px</a>
+
+<script>
+function drawIcon(canvas) {
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+  const r = W * 0.12; // border radius
+
+  // Background: rounded rect, deep bordeaux
+  ctx.clearRect(0, 0, W, H);
+  ctx.beginPath();
+  ctx.moveTo(r, 0);
+  ctx.lineTo(W - r, 0);
+  ctx.quadraticCurveTo(W, 0, W, r);
+  ctx.lineTo(W, H - r);
+  ctx.quadraticCurveTo(W, H, W - r, H);
+  ctx.lineTo(r, H);
+  ctx.quadraticCurveTo(0, H, 0, H - r);
+  ctx.lineTo(0, r);
+  ctx.quadraticCurveTo(0, 0, r, 0);
+  ctx.closePath();
+  ctx.fillStyle = '#7a1f2b';
+  ctx.fill();
+
+  // Open book illustration
+  const cx = W / 2, cy = H * 0.52;
+  const bw = W * 0.62, bh = H * 0.42;
+  const spineX = cx, spineTopY = cy - bh * 0.5, spineBottomY = cy + bh * 0.45;
+
+  // Book shadow / ground
+  ctx.beginPath();
+  ctx.ellipse(cx, spineBottomY + H * 0.035, bw * 0.42, H * 0.035, 0, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(0,0,0,0.25)';
+  ctx.fill();
+
+  // Left page
+  ctx.beginPath();
+  ctx.moveTo(spineX, spineTopY);
+  ctx.bezierCurveTo(spineX - bw * 0.06, cy - bh * 0.28, spineX - bw * 0.5, cy - bh * 0.3, spineX - bw * 0.5, cy);
+  ctx.bezierCurveTo(spineX - bw * 0.5, cy + bh * 0.3, spineX - bw * 0.06, spineBottomY, spineX, spineBottomY);
+  ctx.closePath();
+  ctx.fillStyle = '#faf6ec';
+  ctx.fill();
+
+  // Right page
+  ctx.beginPath();
+  ctx.moveTo(spineX, spineTopY);
+  ctx.bezierCurveTo(spineX + bw * 0.06, cy - bh * 0.28, spineX + bw * 0.5, cy - bh * 0.3, spineX + bw * 0.5, cy);
+  ctx.bezierCurveTo(spineX + bw * 0.5, cy + bh * 0.3, spineX + bw * 0.06, spineBottomY, spineX, spineBottomY);
+  ctx.closePath();
+  ctx.fillStyle = '#f0ead8';
+  ctx.fill();
+
+  // Page lines — left
+  if (W >= 64) {
+    ctx.strokeStyle = 'rgba(122,31,43,0.18)';
+    ctx.lineWidth = W * 0.012;
+    ctx.lineCap = 'round';
+    for (let i = 1; i <= 4; i++) {
+      const t = i / 5;
+      const lx1 = spineX - bw * 0.08;
+      const lx2 = spineX - bw * 0.42;
+      const ly = spineTopY + (spineBottomY - spineTopY) * (0.28 + t * 0.52);
+      ctx.beginPath();
+      ctx.moveTo(lx1, ly);
+      ctx.lineTo(lx2, ly + (lx2 - lx1) * 0.04);
+      ctx.stroke();
+    }
+    // right
+    for (let i = 1; i <= 4; i++) {
+      const t = i / 5;
+      const lx1 = spineX + bw * 0.08;
+      const lx2 = spineX + bw * 0.42;
+      const ly = spineTopY + (spineBottomY - spineTopY) * (0.28 + t * 0.52);
+      ctx.beginPath();
+      ctx.moveTo(lx1, ly);
+      ctx.lineTo(lx2, ly + (lx2 - lx1) * 0.04);
+      ctx.stroke();
+    }
+  }
+
+  // Spine gradient
+  const grad = ctx.createLinearGradient(spineX - W*0.04, 0, spineX + W*0.04, 0);
+  grad.addColorStop(0,   'rgba(0,0,0,0.18)');
+  grad.addColorStop(0.5, 'rgba(255,255,255,0.22)');
+  grad.addColorStop(1,   'rgba(0,0,0,0.18)');
+  ctx.beginPath();
+  ctx.moveTo(spineX, spineTopY);
+  ctx.lineTo(spineX, spineBottomY);
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = W * 0.025;
+  ctx.lineCap = 'round';
+  ctx.stroke();
+}
+
+const sizes = [512, 192, 32, 16];
+sizes.forEach(s => {
+  const c = document.getElementById('c' + s);
+  drawIcon(c);
+  document.getElementById('dl' + s).href = c.toDataURL('image/png');
+});
+</script>
+</body>
+</html>

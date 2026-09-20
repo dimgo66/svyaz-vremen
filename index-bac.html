@@ -10,11 +10,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <!-- Favicon -->
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
-  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
-  <link rel="icon" href="assets/favicon-192.png" type="image/png" sizes="192x192">
-  <link rel="apple-touch-icon" href="assets/favicon-192.png">
   <style>
     :root {
       --ivory: #f4ede0;
@@ -631,48 +626,6 @@
           transparent 18%) !important;
     }
 
-    /* --- переход на страницу --- */
-    .page-jump {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-      font: 500 14px/1 var(--sans);
-      color: var(--ink-2);
-    }
-
-    .page-jump input[type=number] {
-      width: 84px;
-      padding: 10px 8px;
-      font: 600 15px/1 var(--sans);
-      text-align: center;
-      color: var(--ink);
-      background: var(--paper);
-      border: 1px solid var(--rule);
-      border-radius: 2px;
-    }
-
-    .page-jump input[type=number]:focus {
-      outline: 2px solid var(--accent);
-      outline-offset: 1px;
-    }
-
-    .page-jump input[type=range] {
-      width: min(360px, 60vw);
-      accent-color: var(--accent);
-    }
-
-    .page-jump .btn {
-      padding: 11px 18px;
-      font-size: 12px;
-    }
-
-    .page-jump .pj-total {
-      color: var(--muted)
-    }
-
     .read-actions {
       display: flex;
       gap: 12px;
@@ -978,15 +931,6 @@
         <div id="book"></div>
       </div>
 
-      <div class="page-jump" id="pageJump">
-        <button class="btn btn-ghost" type="button" id="pjFirst">Обложка</button>
-        <input type="range" id="pjRange" min="1" max="1" value="1" aria-label="Страница">
-        <label for="pjNum">Страница</label>
-        <input type="number" id="pjNum" min="1" max="1" value="1" inputmode="numeric">
-        <span class="pj-total" id="pjTotal">из —</span>
-        <button class="btn btn-primary" type="button" id="pjGo">Перейти</button>
-      </div>
-
       <div class="read-actions">
         <a href="assets/svyaz-vremen-2026.pdf" download class="btn btn-ghost">
           <svg class="i" viewBox="0 0 24 24">
@@ -1040,7 +984,7 @@
             <p>Писатель и организатор международного конкурса семейного рассказа, лауреат премии «Гипертекст». Автор
               идеи сборника «Связь времён» — площадки, где встречаются голоса разных поколений и стран, а личные
               семейные истории становятся общим культурным кодом.</p>
-            <p>Со-составители — <strong>Владимир Коркунов</strong> и <strong>Игорь Михайлов</strong>. В сборнике — 73
+            <p>Со-составители — <strong>Владимир Коркунов</strong> и <strong>Иван Михайлов</strong>. В сборнике — 24
               автора из семи стран: от коротких новелл о детстве и деревенском лете до глубоких разговоров с прадедами.
             </p>
           </div>
@@ -1139,44 +1083,20 @@
       if (book) book.toggleFullscreen();
     });
 
-    // Переход на любую страницу
-    (function () {
-      const num = document.getElementById('pjNum');
-      const range = document.getElementById('pjRange');
-      const total = document.getElementById('pjTotal');
-      const go = () => {
-        if (!book) return;
-        let n = parseInt(num.value, 10);
-        if (!isFinite(n)) return;
-        n = Math.max(1, Math.min(book.numPages, n));
-        num.value = range.value = n;
-        book.goTo(n);
-      };
-      const sync = (p) => { num.value = range.value = p; };
-
-      bookEl.addEventListener('flipbook:ready', () => {
-        const n = book.numPages;
-        num.max = range.max = n;
-        total.textContent = 'из ' + n;
-        sync(book.currentPage());
-      });
-      bookEl.addEventListener('flipbook:pagechange', (e) => {
-        const p = e.detail.page, v = parseInt(num.value, 10);
-        // в режиме разворота введённая страница может быть правой — не затираем её
-        if (v === p || (book.mode === 'double' && v === p + 1)) return;
-        sync(p);
-      });
-
-      document.getElementById('pjGo').addEventListener('click', go);
-      document.getElementById('pjFirst').addEventListener('click', () => { num.value = 1; go(); });
-      num.addEventListener('keydown', (e) => {
-        e.stopPropagation();               // не перехватывать F, +, − и стрелки книгой
-        if (e.key === 'Enter') { e.preventDefault(); go(); }
-      });
-      range.addEventListener('input', () => { num.value = range.value; });
-      range.addEventListener('change', () => { num.value = range.value; go(); });
-    })();
-
+    // Перелистывание колёсиком мыши
+    let _wheelTs = 0;
+    bookEl.addEventListener('wheel', (e) => {
+      if (!book) return;
+      e.preventDefault();
+      const now = Date.now();
+      if (now - _wheelTs < 700) return;  // не чаще одного переворота в 0.7 с
+      _wheelTs = now;
+      if (e.deltaY > 0 || e.deltaX > 0) {
+        book.next();
+      } else {
+        book.prev();
+      }
+    }, { passive: false });
 
     // Smooth-scroll for in-page anchor nav
     document.querySelectorAll('.navlinks a, .btn[href^="#"]').forEach(a => {
